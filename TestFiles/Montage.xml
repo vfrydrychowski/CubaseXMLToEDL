@@ -1,18 +1,311 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE root SYSTEM "tree2.dtd">
-<root>
-  <node1>content of node 1</node1>
-  <node2/>
-  <node3 attribute="yes" foo="bar">this node has attributes</node3>
-  <node4>other way to create content (which is also a node)</node4>
-  <node5>
-    <node51 odd="no"/>
-    <node52 odd="yes"/>
-    <node53 odd="no"/>
-  </node5>
-  <node6>
-    <node61 odd="no"/>
-    <node62 odd="yes"/>
-    <node63 odd="no"/>
-  </node6>
-</root>
+<?xml version="1.0" encoding="utf-8"?>
+<tracklist>
+   <list name="track" type="obj">
+      <obj class="MMarkerTrackEvent" ID="845089152">
+         <int name="Flags" value="1" />
+         <float name="Start" value="0" />
+         <float name="Length" value="7200" />
+         <obj class="MListNode" name="Node" ID="750741568">
+            <string name="Name" value="Mark" wide="true" />
+            <member name="Domain">
+               <int name="Type" value="1" />
+               <float name="Period" value="1" />
+            </member>
+            <list name="Events" type="obj">
+               <obj class="MRangeMarkerEvent" ID="846826032">
+                  <float name="Start" value="14.40000021457672119140625" />
+                  <float name="Length" value="158.498999861819100942739169113337993621826171875" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Mystère" wide="true" />
+                  <int name="ID" value="1" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184323456">
+                  <float name="Start" value="14.40000021457672119140625" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="1" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1183821728">
+                  <float name="Start" value="89.700001336634159088134765625" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="2" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184323200">
+                  <float name="Start" value="131.150458620960790767639991827309131622314453125" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="3" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1183820064">
+                  <float name="Start" value="144.0000021457672119140625" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="4" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1266849888">
+                  <float name="Start" value="146.3674871810454760634456761181354522705078125" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="5" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184320000">
+                  <float name="Start" value="159.145031538112419866592972539365291595458984375" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="6" />
+               </obj>
+               <obj class="MRangeMarkerEvent" ID="846827184">
+                  <float name="Start" value="190.40000283718109130859375" />
+                  <float name="Length" value="151.8029766428843458925257436931133270263671875" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="NDH" wide="true" />
+                  <int name="ID" value="2" />
+               </obj>
+               <obj class="MMarkerEvent" ID="840554736">
+                  <float name="Start" value="190.40000283718109130859375" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="7" />
+               </obj>
+               <obj class="MMarkerEvent" ID="844463296">
+                  <float name="Start" value="207.508652689756132758702733553946018218994140625" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="8" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184314624">
+                  <float name="Start" value="211.329200320189869444220676086843013763427734375" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="9" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184313088">
+                  <float name="Start" value="221.55384916018550711669377051293849945068359375" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="10" />
+               </obj>
+               <obj class="MMarkerEvent" ID="844464064">
+                  <float name="Start" value="223.70585809517041298022377304732799530029296875" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="11" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1183822880">
+                  <float name="Start" value="335.01395168086264675366692245006561279296875" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Recalage Take 3" wide="true" />
+                  <int name="ID" value="12" />
+               </obj>
+               <obj class="MRangeMarkerEvent" ID="846831072">
+                  <float name="Start" value="399.92381298542022705078125" />
+                  <float name="Length" value="195.5949996329799205341259948909282684326171875" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Tribunal" wide="true" />
+                  <int name="ID" value="3" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184322048">
+                  <float name="Start" value="399.92381298542022705078125" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="13" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1161448992">
+                  <float name="Start" value="478.4777850479014205120620317757129669189453125" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 4" wide="true" />
+                  <int name="ID" value="14" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184332160">
+                  <float name="Start" value="485.11674859837512485682964324951171875" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 1" wide="true" />
+                  <int name="ID" value="15" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1183821088">
+                  <float name="Start" value="487.749897062778472900390625" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 4" wide="true" />
+                  <int name="ID" value="16" />
+               </obj>
+               <obj class="MMarkerEvent" ID="844463680">
+                  <float name="Start" value="538.728156261146068572998046875" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="17" />
+               </obj>
+               <obj class="MMarkerEvent" ID="844462784">
+                  <float name="Start" value="577.423807166516780853271484375" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="18" />
+               </obj>
+               <obj class="MMarkerEvent" ID="844463040">
+                  <float name="Start" value="586.3235903892518763314001262187957763671875" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="19" />
+               </obj>
+               <obj class="MRangeMarkerEvent" ID="846830928">
+                  <float name="Start" value="608.37101185321807861328125" />
+                  <float name="Length" value="251.199988158807855143095366656780242919921875" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Never Let Me Down" wide="true" />
+                  <int name="ID" value="4" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1183822240">
+                  <float name="Start" value="608.37101185321807861328125" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="20" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184326784">
+                  <float name="Start" value="642.3313077410415417034528218209743499755859375" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="21" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1266853984">
+                  <float name="Start" value="645.1596849927618677611462771892547607421875" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="22" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1161562944">
+                  <float name="Start" value="678.55968844890594482421875" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="23" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1161445536">
+                  <float name="Start" value="683.624116323763473701546899974346160888671875" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 2" wide="true" />
+                  <int name="ID" value="24" />
+               </obj>
+               <obj class="MMarkerEvent" ID="1184332928">
+                  <float name="Start" value="793.46118882840028163627721369266510009765625" />
+                  <float name="Length" value="0" />
+                  <member name="Additional Attributes">
+                     <member name="tAMA"></member>
+                  </member>
+                  <string name="Name" value="Take 3" wide="true" />
+                  <int name="ID" value="25" />
+               </obj>
+            </list>
+         </obj>
+         <member name="Additional Attributes">
+            <int name="Eths" value="-260498236" />
+         </member>
+         <obj class="MTrack" name="Track Device" ID="844539088">
+            <int name="Connection Type" value="2" />
+         </obj>
+      </obj>
+   </list>
+   <obj class="PArrangeSetup" name="Setup" ID="845167392">
+      <member name="Length">
+         <float name="Time" value="7200" />
+         <member name="Domain">
+            <int name="Type" value="1" />
+            <float name="Period" value="1" />
+         </member>
+      </member>
+      <int name="BarOffset" value="0" />
+      <int name="FrameType" value="5" />
+      <int name="TimeType" value="0" />
+      <float name="SampleRate" value="48000" />
+      <int name="SampleSize" value="24" />
+      <int name="SampleFormatSize" value="3" />
+      <int name="PanLaw" value="6" />
+      <member name="RecordFileType">
+         <int name="MacType" value="1463899717" />
+         <string name="DosType" value="wav" wide="true" />
+         <string name="UnixType" value="wav" wide="true" />
+         <string name="Name" value="Wave File" wide="true" />
+      </member>
+      <int name="VolumeMax" value="0" />
+      <int name="HmtType" value="0" />
+      <int name="HmtDepth" value="100" />
+   </obj>
+</tracklist>
