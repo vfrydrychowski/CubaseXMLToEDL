@@ -6,6 +6,17 @@
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
 
+typedef struct marker_s{
+	char* name;
+	float start;
+	float duration;
+}Marker;
+
+typedef struct marker_tab{
+	int size;
+	Marker* markerTab;
+}Marker_tab;
+
 void getMarkerValue (xmlDocPtr doc) {
 
     xmlNodePtr cur;
@@ -24,24 +35,14 @@ void getMarkerValue (xmlDocPtr doc) {
 		xmlXPathFreeObject(result);
         printf("No result\n");
 	}
-    /* int i = 0;
-    int fin =0;
-    while((i<result->nodesetval->nodeNr) && (!fin)){
-        if (xmlStrcmp(xmlGetProp(result->nodesetval->nodeTab[i], (xmlChar*)"name"), (xmlChar*)"Events")){
-            fin = 1;
-            cur = result->nodesetval->nodeTab[i];
-        }
-        i++;
-    } */
+
     cur=NULL;
-    cur=result->nodesetval->nodeTab[0];//a refaire
-    for (int i =1; (i<result->nodesetval->nodeNr) && !(xmlStrcmp((xmlChar*)"Events", xmlGetProp(result->nodesetval->nodeTab[i], (xmlChar*)"name"))); i++){
+    //cur=result->nodesetval->nodeTab[0];//a refaire
+    for (int i =0; (i<result->nodesetval->nodeNr) && !(xmlStrcmp((xmlChar*)"Events", xmlGetProp(result->nodesetval->nodeTab[i], (xmlChar*)"name"))); i++){
         cur=result->nodesetval->nodeTab[i];
     }
     
     xmlNodePtr curi;
-    //printf("%s\n", cur->name);
-    //printf("%s\n", xmlGetProp(cur, (xmlChar*)"name"));
     
     cur = xmlFirstElementChild(cur);
     
@@ -51,14 +52,10 @@ void getMarkerValue (xmlDocPtr doc) {
     int fin = 0;
 	while (cur != NULL) {
         curi = xmlFirstElementChild(cur);
-		//printf("%s\n", curi->name);
-        //printf("cur = %s curi = %s\n", cur->name, curi->name);
         fin=0;
         while((curi !=NULL) && !fin){
-            //printf("%s\n", curi->name);
             if(!xmlStrcmp(curi->name, (xmlChar*)"string")){
                 fin =1;
-				//printf("%s\n", curi->name);
                 c = xmlGetProp(curi, (xmlChar*)"value");
                 printf("%s\n", c);
             }
@@ -66,9 +63,6 @@ void getMarkerValue (xmlDocPtr doc) {
         }
 	    cur = xmlNextElementSibling(cur);
 	} 
-	//xmlXPathFreeObject(result);
-    //xmlFreeNode(cur);
-    //xmlFreeNode(curi);
 }
 
 
