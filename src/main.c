@@ -7,20 +7,32 @@
 #include <libxml/parser.h>
 
 typedef struct marker_s{
-	char* name;
+	unsigned char* name;
 	float start;
 	float duration;
 }Marker;
 
-typedef struct marker_tab{
+typedef struct marker_tab_s{
 	int size;
-	Marker* markerTab;
+	Marker* tab;
 }Marker_tab;
 
-void getMarkerValue (xmlDocPtr doc) {
+int count_MarkerListNode(xmlNodePtr MarkerList){
+	xmlNode Node = *MarkerList;
+	int i=0;
+	while(xmlNextElementSibling(&Node) != NULL){
+		i++;
+		MarkerList = xmlNextElementSibling(&Node);
+	}
+	return i;
+}
 
-    xmlNodePtr cur;
+void getMarkerValues (xmlDocPtr doc, Marker_tab* markerTab) {
+
+    xmlNodePtr markerListNode = NULL;
+	xmlNodePtr markerNode;
     xmlXPathContextPtr context = xmlXPathNewContext(doc);
+	
     if (context == NULL) {
 		printf("Error in xmlXPathNewContext\n");
         exit(1);
@@ -36,32 +48,26 @@ void getMarkerValue (xmlDocPtr doc) {
         printf("No result\n");
 	}
 
-    cur=NULL;
-    //cur=result->nodesetval->nodeTab[0];//a refaire
+	//retrieve the right node
     for (int i =0; (i<result->nodesetval->nodeNr) && !(xmlStrcmp((xmlChar*)"Events", xmlGetProp(result->nodesetval->nodeTab[i], (xmlChar*)"name"))); i++){
-        cur=result->nodesetval->nodeTab[i];
+        markerListNode=result->nodesetval->nodeTab[i];
     }
     
-    xmlNodePtr curi;
-    
-    cur = xmlFirstElementChild(cur);
-    
-    
-    
-    xmlChar *c;
+    markerListNode = xmlFirstElementChild(markerListNode);
+	markerTab->size = count_MarkerListNode(markerListNode);
+	markerTab->tab = (Marker*)malloc(sizeof(Marker)*markerTab->size);
     int fin = 0;
-	while (cur != NULL) {
-        curi = xmlFirstElementChild(cur);
+	for (int i = 0; i<markerTab->size; i++) {
+        markerNode = xmlFirstElementChild(markerListNode);
         fin=0;
-        while((curi !=NULL) && !fin){
-            if(!xmlStrcmp(curi->name, (xmlChar*)"string")){
+        while((markerNode !=NULL) && !fin){
+            if(!xmlStrcmp(markerNode->name, (xmlChar*)"string")){
                 fin =1;
-                c = xmlGetProp(curi, (xmlChar*)"value");
-                printf("%s\n", c);
+                markerTab->tab[i].name = xmlGetProp(markerNode, (xmlChar*)"value");
             }
-            curi = xmlNextElementSibling(curi);
+            markerNode = xmlNextElementSibling(markerNode);
         }
-	    cur = xmlNextElementSibling(cur);
+	    markerListNode = xmlNextElementSibling(markerListNode);
 	} 
 }
 
@@ -69,7 +75,7 @@ void getMarkerValue (xmlDocPtr doc) {
 void parseDoc(char *docname) {
 
 	xmlDocPtr doc;
-	xmlNodePtr cur;
+	xmlNodePtr markerListNode;
 
 	doc = xmlParseFile(docname);
 	
@@ -77,20 +83,13 @@ void parseDoc(char *docname) {
 		fprintf(stderr,"Document not parsed successfully. \n");
 		return;
 	}
-	cur = xmlDocGetRootElement(doc);
-	if (cur == NULL) {
+	markerListNode = xmlDocGetRootElement(doc);
+	if (markerListNode == NULL) {
 		fprintf(stderr,"empty document\n");
 		xmlFreeDoc(doc);
 		return;
 	}
-	
-	/* if (xmlStrcmp(cur->name, (const xmlChar *) "story")) {
-		fprintf(stderr,"document of the wrong type, root node != story");
-		xmlFreeDoc(doc);
-		return;
-	} */
-	
-	getMarkerValue (doc);
+	getMarkerValues (doc);
 	xmlFreeDoc(doc);
 	return;
 }
@@ -98,7 +97,7 @@ void parseDoc(char *docname) {
 int main(int argc, char **argv) {
 
 	char *docname;
-	if (argc <= 1) {
+	if (argc <= 1 && argc > 1) {
 		printf("Usage: %s docname\n", argv[0]);
 		return(0);
 	}
