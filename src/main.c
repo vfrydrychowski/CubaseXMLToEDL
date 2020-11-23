@@ -17,12 +17,19 @@ typedef struct marker_tab_s{
 	Marker* tab;
 }Marker_tab;
 
+void markerToString(Marker m){
+	printf("name : %s start : %f duration : %f\n", m.name, m.start, m.duration);
+}
+
 int count_MarkerListNode(xmlNodePtr MarkerList){
-	xmlNode Node = *MarkerList;
+	
+	xmlNodePtr ptrNode = (xmlNodePtr)malloc(sizeof(xmlNode));
+	
+	ptrNode = MarkerList;
 	int i=0;
-	while(xmlNextElementSibling(&Node) != NULL){
+	while(ptrNode != NULL){
+		ptrNode = xmlNextElementSibling(ptrNode);
 		i++;
-		MarkerList = xmlNextElementSibling(&Node);
 	}
 	return i;
 }
@@ -40,6 +47,7 @@ void getMarkerValues (xmlDocPtr doc, Marker_tab* markerTab) {
 
 	xmlXPathObjectPtr result= xmlXPathEvalExpression((xmlChar*)"//list", context);
 	xmlXPathFreeContext(context);
+
 	if (result == NULL) {
 		printf("Error in xmlXPathEvalExpression\n");
 	}
@@ -49,13 +57,15 @@ void getMarkerValues (xmlDocPtr doc, Marker_tab* markerTab) {
 	}
 
 	//retrieve the right node
-    for (int i =0; (i<result->nodesetval->nodeNr) && !(xmlStrcmp((xmlChar*)"Events", xmlGetProp(result->nodesetval->nodeTab[i], (xmlChar*)"name"))); i++){
+	markerListNode=result->nodesetval->nodeTab[0];
+    for (int i =1; (i<result->nodesetval->nodeNr) && !(xmlStrcmp((xmlChar*)"Events", xmlGetProp(result->nodesetval->nodeTab[i], (xmlChar*)"name"))); i++){
         markerListNode=result->nodesetval->nodeTab[i];
     }
-    
+    printf("retrieve the node ok\n");
     markerListNode = xmlFirstElementChild(markerListNode);
 	markerTab->size = count_MarkerListNode(markerListNode);
 	markerTab->tab = (Marker*)malloc(sizeof(Marker)*markerTab->size);
+	printf("markerList size : %d\n", markerTab->size);
     int fin = 0;
 	for (int i = 0; i<markerTab->size; i++) {
         markerNode = xmlFirstElementChild(markerListNode);
@@ -111,8 +121,11 @@ int main(int argc, char **argv) {
 
 	docname = argv[1];
 	doc = parseDoc (docname);
-
 	getMarkerValues(doc, &Mt);
+
+	for(int i = 0; i<Mt.size; i++){
+		markerToString(Mt.tab[i]);
+	}
 	
 	return (1);
 }
