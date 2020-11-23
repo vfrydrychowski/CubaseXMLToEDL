@@ -65,6 +65,14 @@ void getMarkerValues (xmlDocPtr doc, Marker_tab* markerTab) {
                 fin =1;
                 markerTab->tab[i].name = xmlGetProp(markerNode, (xmlChar*)"value");
             }
+			if(!xmlStrcmp(markerNode->name, (xmlChar*)"float")){
+				if(!xmlStrcmp(xmlGetProp(markerNode, (xmlChar*)"name"), (xmlChar*)"Start")){
+					markerTab->tab[i].start = atof((char *)xmlGetProp(markerNode, (xmlChar*)"value"));
+				}
+				if(!xmlStrcmp(xmlGetProp(markerNode, (xmlChar*)"name"), (xmlChar*)"Length")){
+					markerTab->tab[i].duration = atof((char *)xmlGetProp(markerNode, (xmlChar*)"value"));
+				}
+            }
             markerNode = xmlNextElementSibling(markerNode);
         }
 	    markerListNode = xmlNextElementSibling(markerListNode);
@@ -72,7 +80,7 @@ void getMarkerValues (xmlDocPtr doc, Marker_tab* markerTab) {
 }
 
 
-void parseDoc(char *docname) {
+xmlDocPtr parseDoc(char *docname) {
 
 	xmlDocPtr doc;
 	xmlNodePtr markerListNode;
@@ -81,29 +89,30 @@ void parseDoc(char *docname) {
 	
 	if (doc == NULL ) {
 		fprintf(stderr,"Document not parsed successfully. \n");
-		return;
+		return NULL;
 	}
 	markerListNode = xmlDocGetRootElement(doc);
 	if (markerListNode == NULL) {
 		fprintf(stderr,"empty document\n");
 		xmlFreeDoc(doc);
-		return;
+		return NULL;
 	}
-	getMarkerValues (doc);
-	xmlFreeDoc(doc);
-	return;
+	return doc;
 }
 
 int main(int argc, char **argv) {
-
+	xmlDocPtr doc;
 	char *docname;
+	Marker_tab Mt;
 	if (argc <= 1 && argc > 1) {
 		printf("Usage: %s docname\n", argv[0]);
 		return(0);
 	}
 
 	docname = argv[1];
-	parseDoc (docname);
+	doc = parseDoc (docname);
+
+	getMarkerValues(doc, &Mt);
 	
 	return (1);
 }
