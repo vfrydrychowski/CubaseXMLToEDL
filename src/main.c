@@ -154,6 +154,17 @@ xmlDocPtr parseDoc(char *docname) {
 	return doc;
 }
 
+void EDL(char* edltxt, char* fileName){
+	strcat(fileName, ".edl");
+	FILE* edl = NULL;
+	edl = fopen(fileName, "a");
+	if(edl == NULL){
+		perror("edl oppening error\n");
+	}
+	fprintf(edl, "%s", edltxt);
+	fclose(edl);
+}
+
 int main(int argc, char **argv) {
 	xmlDocPtr doc;
 	char *docname;
@@ -171,6 +182,7 @@ int main(int argc, char **argv) {
 	char * endname = strrchr(docname, '.');
 	strcpy(endname, "");
 	printf("%s\n", markerListToString(Mt, 30, docname));
+	EDL(markerListToString(Mt, 30, docname), docname);
 
 	return (1);
 }
