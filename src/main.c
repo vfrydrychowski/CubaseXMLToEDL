@@ -49,7 +49,7 @@ char* markerToString(Marker mark, int framesec, int id, char* edltxt){
 		d=1;
 	}
 
-	sprintf(edltxt, "%s%s  001      V     C        %s:%s:%s:%s %s:%s:%s:%s %s:%s:%s:%s %s:%s:%s:%s\n |C:ResolveColorBlue |M:%s |D:%d\n\n", edltxt, intToChar3(id), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f+1), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f+1),mark.name,d);
+	sprintf(edltxt, "%s%s  001      V     C        %s:%s:%s:%s %s:%s:%s:%s %s:%s:%s:%s %s:%s:%s:%s\n |C:ResolveColorBlue |M:%s |D:%d\n\n", edltxt, intToChar3(id+1), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f+1), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f+1),mark.name,d);
 	return edltxt;
 }
 
@@ -168,21 +168,23 @@ void EDL(char* edltxt, char* fileName){
 int main(int argc, char **argv) {
 	xmlDocPtr doc;
 	char *docname;
+	int framesec;
 	Marker_tab Mt;
-	if (argc <= 1 && argc > 1) {
-		printf("Usage: %s docname\n", argv[0]);
+	if (argc != 3) {
+		printf("Usage: %s docname framesec\n", argv[0]);
 		return(0);
 	}
 
 	docname = argv[1];
+	framesec = atoi(argv[2]);
 	doc = parseDoc (docname);
 	getMarkerValues(doc, &Mt);
 	docname = strrchr(docname, '/');
 	docname++;
 	char * endname = strrchr(docname, '.');
 	strcpy(endname, "");
-	printf("%s\n", markerListToString(Mt, 30, docname));
-	EDL(markerListToString(Mt, 30, docname), docname);
+	printf("%s\n", markerListToString(Mt, framesec, docname));
+	EDL(markerListToString(Mt, framesec, docname), docname);
 
 	return (1);
 }
