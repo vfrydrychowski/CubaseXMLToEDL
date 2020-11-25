@@ -40,14 +40,15 @@ char* intToChar3(int i){
 }
 
 char* markerToString(Marker mark, int framesec, int id, char* edltxt){
-	int h = 1;
-	int m = (int)(floorf(mark.start/60));
+	int h = (int)(floorf(mark.start/60/60));
+	int m = (int)(floorf(mark.start/60-60*h));
 	int s = (int)(floorf(mark.start))-m*60;
 	int f = 1+(int)(floorf((mark.start - floorf(mark.start))*framesec));
 	int d = (int)floorf(mark.duration * framesec);
 	if(d==0){
 		d=1;
 	}
+	h++;
 
 	sprintf(edltxt, "%s%s  001      V     C        %s:%s:%s:%s %s:%s:%s:%s %s:%s:%s:%s %s:%s:%s:%s\n |C:ResolveColorBlue |M:%s |D:%d\n\n", edltxt, intToChar3(id+1), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f+1), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f), intToChar2(h), intToChar2(m), intToChar2(s), intToChar2(f+1),mark.name,d);
 	return edltxt;
